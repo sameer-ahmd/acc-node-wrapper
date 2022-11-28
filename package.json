@@ -22,9 +22,11 @@
   },
   "homepage": "https://github.com/FynniX/acc-node-wrapper#readme",
   "dependencies": {
-    "@fynnix/node-easy-ipc": "^1.0.8",
     "binutils": "^0.1.0",
     "moment": "^2.29.1",
     "utf8-bytes": "^0.0.1"
+  },
+  "optionalDependencies": {
+    "@fynnix/node-easy-ipc": "^1.0.9"
   }
 }

@@ -1,0 +1,50 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@fynnix/node-easy-ipc': ^1.0.9
+  binutils: ^0.1.0
+  moment: ^2.29.1
+  utf8-bytes: ^0.0.1
+
+dependencies:
+  binutils: 0.1.0
+  moment: 2.29.4
+  utf8-bytes: 0.0.1
+
+optionalDependencies:
+  '@fynnix/node-easy-ipc': 1.0.9
+
+packages:
+
+  /@fynnix/node-easy-ipc/1.0.9:
+    resolution: {integrity: sha512-L0GZakxgshMHlVlxOHo+Z30Fpus0CpppV2pdoFaRtcpk6ohKJlxEIDYW+jXoSGcj7Kj1LjLZKckrkkjDB7rzuA==}
+    requiresBuild: true
+    dependencies:
+      node-addon-api: 3.2.1
+      node-gyp-build: 4.5.0
+    dev: false
+    optional: true
+
+  /binutils/0.1.0:
+    resolution: {integrity: sha512-6vnIpay9qti6uAR5NzcII108p8KCAa/D7KQjgNwrZj4yGXA+k8a+nRbx5VUTTjX1nHmiHqOd++Sg0iJsRcU9vQ==}
+    engines: {node: '>=0.10'}
+    dev: false
+
+  /moment/2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
+    dev: false
+
+  /node-addon-api/3.2.1:
+    resolution: {integrity: sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==}
+    dev: false
+    optional: true
+
+  /node-gyp-build/4.5.0:
+    resolution: {integrity: sha512-2iGbaQBV+ITgCz76ZEjmhUKAKVf7xfY1sRl4UiKQspfZMH2h06SyhNsnSVy50cwkFQDGLyif6m/6uFXHkOZ6rg==}
+    hasBin: true
+    dev: false
+    optional: true
+
+  /utf8-bytes/0.0.1:
+    resolution: {integrity: sha512-GifWmJAx2qAXT+lZLhbkWhBsy7pr6xWHiPWlVToDiELdWgZwt4Ogjf9tlgvKuALzTFR/d+EPQQI9ogJV3957Jg==}
+    dev: false
