@@ -259,7 +259,7 @@ export interface SharedMemoryOptions {
 
 export interface AsServerOptions extends BroadcastOptions {
   /** Forward the UDP binaries to another address on your network */
-  forwardAddresses: NetworkAddress[];
+  forwardAddresses?: NetworkAddress[];
   /** Skip parsing of packets on this computer */
   forwardOnly?: boolean;
   physicsUpdate?: number;
