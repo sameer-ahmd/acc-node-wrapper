@@ -2,109 +2,120 @@
 
 [Assetto Corsa Compitizione](https://www.assettocorsa.it/competizione/) SDK and Shared Memory implementation for Node.js.
 
-With ***acc-node-wrapper*** you have a wrapper which gives you data from the [Assetto Corsa Compitizione](https://www.assettocorsa.it/competizione/) Broadcasting SDK and from the Shared Memory.
-This is the [Assetto Corsa Compitizione](https://www.assettocorsa.it/competizione/) Broadcasting SDK rewritten in Node.js. It can also access the Shared Memory from [Assetto Corsa Compitizione](https://www.assettocorsa.it/competizione/). 
+This package allows you to broadcast ACC data across your local network as well as interact with it on the host computer.
 
-## Requirements
+## Mode Examples
 
-- You need a Windows Machine because the Shared Memory Module only works on Windows.
-- You need a ACC which is configured for the Broadcasting SDK.
+### Client/Server Mode
 
-## Installing
+This mode allows you to set up a 'server' on the same machine that is running ACC and then pass the data onto different computers in your local network. If you don't want to process any data on the machine that is running ACC then pass in the `forwardOnly` option and processing will be skipped.
 
-This package was tested under [Node.js](https://nodejs.org/) 15.11.0 x64.
-
-[Assetto Corsa Compitizione](https://www.assettocorsa.it/competizione/) 1.7.4 was used while testing.
-
-`npm install acc-node-wrapper --save`
-
-## API documentation
-
-# Broadcast SDK
+In this example the host machine would be passing on ALL of the game data to 192.168.178.43:9001 and that computer would be console.logging the data from the PHYSICS shared memory.
 
 ```js
-const ACCNodeWrapper = require('acc-node-wrapper')
-const wrapper = new ACCNodeWrapper()
+// host machine (server)
+// should be a windows computer running ACC
+import ACCNodeWrapper from "@pitwall/acc-node-wrapper";
 
-/**
- * @name initBroadcastSDK
- * @comment This is the init function for the ACC Node Wrapper. This inits the Broadcast SDK.
- * @param SERVER_DISPLAYNAME
- * @param SERVER_IP
- * @param SERVER_PORT
- * @param SERVER_PASS
- * @param SERVER_COMMANDPASS
- * @param UPDATE_INTERVAL
- * @param Logging
- */
-wrapper.initBroadcastSDK("Max", "127.0.0.1", 9000, "123", "123", 250, true)
+const wrapper = new ACCNodeWrapper();
+
+wrapper.initAsServer({
+  name: "ACC",
+  address: "localhost",
+  password: "asd",
+  cmdPassword: "",
+  // these are the different addresses on your network to pass the data onto
+  forwardAddresses: [{ address: "192.168.178.43", port: 9001 }],
+});
+
+wrapper.on("PHYSICS_EVENT", (data) => console.log(data));
+
+wrapper.on("REALTIME_CAR_UPDATE", (data) => console.log(data));
 ```
-
-| Event | Description |
-| --- | --- |
-| "REGISTRATION_RESULT" | Result of REGISTRATION_RESULT. |
-| "REALTIME_UPDATE" | Result of REALTIME_UPDATE. |
-| "REALTIME_CAR_UPDATE" | Result of REALTIME_CAR_UPDATE. |
-| "ENTRY_LIST" | Result of ENTRY_LIST. |
-| "TRACK_DATA" | Result of TRACK_DATA. |
-| "ENTRY_LIST_CAR" | Result of ENTRY_LIST_CAR. |
-| "BROADCASTING_EVENT" | Result of BROADCASTING_EVENT. |
 
 ```js
-wrapper.on("REGISTRATION_RESULT", result => {
-    console.log(result)
-})
+// client machine
+// in this example the local address of this computer would be 192.168.178.43
+
+import ACCNodeWrapper from "@pitwall/acc-node-wrapper";
+
+const wrapper = new ACCNodeWrapper();
+
+wrapper.initAsClient(9001);
+
+wrapper.on("PHYSICS_EVENT", (data) => console.log(data));
 ```
 
-| Function | Description |
-| --- | --- |
-| Disconnect() | Disconnect from connection. |
-| SetFocus() | This function sets the focus of the camera. |
-| SetCamera() | This function sets the active camera. |
-| RequestInstantReplay() | This function is requesting instant replay. |
-| RequestHUDPage() | This function is requesting a HUD Page change. |
+If you want to access both shared memory and broadcast API then this is the recommended way to do this. If you don't want to stream the data to the network just don't pass any network address in.
 
 ```js
-wrapper.Disconnect()
+// host machine (server)
+// should be a windows computer running ACC
+import ACCNodeWrapper from "@pitwall/acc-node-wrapper";
+
+const wrapper = new ACCNodeWrapper();
+
+wrapper.initAsServer({
+  name: "ACC",
+  address: "localhost",
+  password: "asd",
+  cmdPassword: "",
+});
+
+wrapper.on("PHYSICS_EVENT", (data) => console.log(data));
+
+wrapper.on("REALTIME_CAR_UPDATE", (data) => console.log(data));
 ```
 
-# Shared Memory
+### Broadcast Mode
+
+This code will work on any machine in your network but does not return any data from shared memory. If you want to run it on a computer not running ACC just change the address to the IP of the computer running ACC
 
 ```js
-const ACCNodeWrapper = require('acc-node-wrapper')
-const wrapper = new ACCNodeWrapper()
+import ACCNodeWrapper from "@pitwall/acc-node-wrapper";
 
-/**
- * @name initSharedMemory
- * @comment This is the init function for the ACC Node Wrapper. This inits the Shared Memory.
- * @param M_PHYSICS_UPDATE_INTERVAL
- * @param M_GRAPHICS_UPDATE_INTERVAL
- * @param M_STATIC_UPDATE_INTERVAL
- * @param Logging
- */
-wrapper.initSharedMemory(250, 250, 250, true)
+const wrapper = new ACCNodeWrapper();
+
+wrapper.initBroadcastSDK({
+  name: "ACC",
+  address: "localhost",
+  password: "asd",
+  cmdPassword: "",
+  port: 9000,
+});
+
+wrapper.on("REALTIME_CAR_UPDATE", (data) => console.log(data));
 ```
 
-| Event | Description |
-| --- | --- |
-| "M_PHYSICS_RESULT" | Result of Physics File in Shared Memory. |
-| "M_GRAPHICS_RESULT" | Result of Graphics File in Shared Memory. |
-| "M_STATIC_RESULT" | Result of Static File in Shared Memory. |
+### Shared Memory Mode
 
 ```js
-wrapper.on("M_PHYSICS_RESULT", result => {
-    console.log(result)
-})
+// host machine (server)
+// should be a windows computer running ACC
+import ACCNodeWrapper from "@pitwall/acc-node-wrapper";
+
+const wrapper = new ACCNodeWrapper();
+
+wrapper.initSharedMemory({
+  graphicsUpdateInt: 250,
+  physicsUpdateInt: 250,
+  staticUpdateInt: 250,
+});
+
+wrapper.on("STATIC_EVENT", (data) => console.log(data));
 ```
 
-| Function | Description |
-| --- | --- |
-| disconnectSharedMemory() | Disconnect from Shared Memory. |
+Special Thanks
 
-```js
-wrapper.disconnectSharedMemory()
-```
+[FynniX](https://github.com/FynniX/) This package is a fork from the original [acc-node-wrapper](https://github.com/FynniX/acc-node-wrapper)
+It is 'rewritten' in typescript to allow for intellisense of returned data. It also is designed to not fail when installed on an OS other than windows, although it does not provide full functionality when not on windows with ACC installed on it.
+
+It can also broadcast the results of the shared memory across the local network when running in client/server mode. The use case for this was when the computer running ACC was not also running a dashboard like in Pit Pi
 
 ## License
 
 Released under the [MIT License](https://github.com/FynniX/acc-node-wrapper/blob/main/LICENSE).
+
+## Notes
+
+This package is stable and can be used but I will be continuing to build out it's API. You can expect the main APIs not to change in future.
