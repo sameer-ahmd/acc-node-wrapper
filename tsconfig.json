@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es3",
+    "lib": ["es2017", "esnext.asynciterable"],
+    "typeRoots": ["./node_modules/@types", "./src/types/index.d"],
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "pretty": true,
+    "allowJs": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "downlevelIteration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "tests", "stubs"]
+}
