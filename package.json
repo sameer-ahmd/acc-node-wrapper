@@ -4,7 +4,8 @@
   "description": "ACC SDK and ACC Shared Memory implementation for Node.js.",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "start": "node src/index.js",
