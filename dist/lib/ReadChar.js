@@ -1,0 +1,12 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+const ReadChar = reader => {
+  const byte = reader.ReadBytes(2);
+  return byte.toString().split("\x00")[0];
+};
+var _default = exports.default = ReadChar;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJSZWFkQ2hhciIsInJlYWRlciIsImJ5dGUiLCJSZWFkQnl0ZXMiLCJ0b1N0cmluZyIsInNwbGl0IiwiX2RlZmF1bHQiLCJleHBvcnRzIiwiZGVmYXVsdCJdLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9saWIvUmVhZENoYXIudHMiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgUmVhZENoYXIgPSAocmVhZGVyKSA9PiB7XHJcbiAgY29uc3QgYnl0ZSA9IHJlYWRlci5SZWFkQnl0ZXMoMik7XHJcbiAgcmV0dXJuIGJ5dGUudG9TdHJpbmcoKS5zcGxpdChcIlxceDAwXCIpWzBdO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgUmVhZENoYXI7XHJcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUEsTUFBTUEsUUFBUSxHQUFJQyxNQUFNLElBQUs7RUFDM0IsTUFBTUMsSUFBSSxHQUFHRCxNQUFNLENBQUNFLFNBQVMsQ0FBQyxDQUFDLENBQUM7RUFDaEMsT0FBT0QsSUFBSSxDQUFDRSxRQUFRLENBQUMsQ0FBQyxDQUFDQyxLQUFLLENBQUMsTUFBTSxDQUFDLENBQUMsQ0FBQyxDQUFDO0FBQ3pDLENBQUM7QUFBQyxJQUFBQyxRQUFBLEdBQUFDLE9BQUEsQ0FBQUMsT0FBQSxHQUVhUixRQUFRIiwiaWdub3JlTGlzdCI6W119

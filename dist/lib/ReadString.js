@@ -1,0 +1,14 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/*=== Read String from Binary ====*/
+const ReadString = reader => {
+  const length = reader.ReadUInt16();
+  const bytes = reader.ReadBytes(length);
+  return bytes.toString();
+};
+var _default = exports.default = ReadString;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJSZWFkU3RyaW5nIiwicmVhZGVyIiwibGVuZ3RoIiwiUmVhZFVJbnQxNiIsImJ5dGVzIiwiUmVhZEJ5dGVzIiwidG9TdHJpbmciLCJfZGVmYXVsdCIsImV4cG9ydHMiLCJkZWZhdWx0Il0sInNvdXJjZXMiOlsiLi4vLi4vc3JjL2xpYi9SZWFkU3RyaW5nLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qPT09IFJlYWQgU3RyaW5nIGZyb20gQmluYXJ5ID09PT0qL1xyXG5jb25zdCBSZWFkU3RyaW5nID0gKHJlYWRlcikgPT4ge1xyXG4gIGNvbnN0IGxlbmd0aCA9IHJlYWRlci5SZWFkVUludDE2KCk7XHJcbiAgY29uc3QgYnl0ZXMgPSByZWFkZXIuUmVhZEJ5dGVzKGxlbmd0aCk7XHJcbiAgcmV0dXJuIGJ5dGVzLnRvU3RyaW5nKCk7XHJcbn07XHJcblxyXG5leHBvcnQgZGVmYXVsdCBSZWFkU3RyaW5nO1xyXG4iXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBO0FBQ0EsTUFBTUEsVUFBVSxHQUFJQyxNQUFNLElBQUs7RUFDN0IsTUFBTUMsTUFBTSxHQUFHRCxNQUFNLENBQUNFLFVBQVUsQ0FBQyxDQUFDO0VBQ2xDLE1BQU1DLEtBQUssR0FBR0gsTUFBTSxDQUFDSSxTQUFTLENBQUNILE1BQU0sQ0FBQztFQUN0QyxPQUFPRSxLQUFLLENBQUNFLFFBQVEsQ0FBQyxDQUFDO0FBQ3pCLENBQUM7QUFBQyxJQUFBQyxRQUFBLEdBQUFDLE9BQUEsQ0FBQUMsT0FBQSxHQUVhVCxVQUFVIiwiaWdub3JlTGlzdCI6W119
