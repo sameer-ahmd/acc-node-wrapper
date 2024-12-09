@@ -712,7 +712,7 @@ export class ACCNodeWrapper extends EventEmitter {
     this.SharedMemoryInterval1 = setInterval(() => {
       const m_physics_result = this.ReadPhysics();
 
-      this.emit("M_PHYSICS_RESULT", m_physics_result);
+      this.emit("PHYSICS_EVENT", m_physics_result);
 
       /*==== Logging Message ====*/
       if (this.Logging2) {
@@ -728,7 +728,7 @@ export class ACCNodeWrapper extends EventEmitter {
     /*==== Start Interval M_GRAPHICS ====*/
     this.SharedMemoryInterval2 = setInterval(() => {
       const m_graphics_result = this.ReadGraphics();
-      this.emit("M_GRAPHICS_RESULT", m_graphics_result);
+      this.emit("GRAPHICS_EVENT", m_graphics_result);
 
       /*==== Logging Message ====*/
       if (this.Logging2) {
@@ -744,7 +744,7 @@ export class ACCNodeWrapper extends EventEmitter {
     /*==== Start Interval M_STATIC ====*/
     this.SharedMemoryInterval3 = setInterval(() => {
       const m_static_result = this.ReadStatic();
-      this.emit("M_STATIC_RESULT", m_static_result);
+      this.emit("STATIC_EVENT", m_static_result);
 
       /*==== Logging Message ====*/
       if (this.Logging2) {
