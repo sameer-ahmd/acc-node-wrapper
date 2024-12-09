@@ -1,5 +1,5 @@
 {
-  "name": "@pitwall/acc-node-wrapper",
+  "name": "@sameer-ahmd/acc-node-wrapper",
   "version": "0.1.4",
   "description": "ACC SDK and ACC Shared Memory implementation for Node.js.",
   "main": "dist/index.js",
@@ -9,23 +9,24 @@
   "scripts": {
     "start": "node src/index.js",
     "build": "rimraf dist && babel --config-file ./babel.config.js --extensions \".ts\" --out-dir=dist src && tsc",
+    "postinstall": "npm run build",
     "dev": "ts-node -r tsconfig-paths/register ./src/test.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pitpi/acc-node-wrapper"
+    "url": "git+https://github.com/sameer-ahmd/acc-node-wrapper"
   },
   "keywords": [
     "nodejs",
     "assetto-corsa-competizione",
     "assetto-corsa-competizione-server"
   ],
-  "author": "Ben Pleco",
+  "author": "Sameer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pitpi/acc-node-wrapper/issues"
+    "url": "https://github.com/sameer-ahmd/acc-node-wrapper/issues"
   },
-  "homepage": "https://github.com/pitpi/acc-node-wrapper#readme",
+  "homepage": "https://github.com/sameer-ahmd/acc-node-wrapper#readme",
   "dependencies": {
     "binutils": "^0.1.0",
     "moment": "^2.29.1",
