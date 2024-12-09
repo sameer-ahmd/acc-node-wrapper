@@ -30,14 +30,15 @@
   "dependencies": {
     "binutils": "^0.1.0",
     "moment": "^2.29.1",
-    "utf8-bytes": "^0.0.1"
+    "utf8-bytes": "^0.0.1",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "rimraf": "^6.0.1"
   },
   "optionalDependencies": {
     "@fynnix/node-easy-ipc": "^1.0.9"
   },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.20.5",
     "@babel/helper-module-imports": "^7.18.6",
     "@babel/node": "^7.20.5",
     "@babel/plugin-transform-typescript": "^7.20.2",
@@ -46,7 +47,6 @@
     "@types/node": "^18.11.9",
     "babel-plugin-const-enum": "^1.2.0",
     "babel-plugin-module-resolver": "^4.1.0",
-    "rimraf": "^6.0.1",
     "tsconfig-paths": "^4.1.0",
     "tscpaths": "^0.0.9",
     "typescript": "^4.9.3"
